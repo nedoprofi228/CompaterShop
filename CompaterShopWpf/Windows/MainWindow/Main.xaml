@@ -1,0 +1,79 @@
+<Window x:Class="CompaterShopWpf.Windows.Main"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CompaterShopWpf"
+xmlns:entity="clr-namespace:CompaterShopWpf.Core.Entities"
+
+Title="Магазин компьютерных товаров" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="CompChop" FontWeight="Bold" FontSize="20" Margin="10"/>
+            <TextBlock Text="Каталоги" FontWeight="Bold" Height="20" Margin="10" HorizontalAlignment="Center"/>
+            
+            <!-- Дерево каталогов и категорий -->
+            <TreeView Name="treeView"  ItemsSource="{Binding Catalogs}" >
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type entity:Catalog}" ItemsSource="{Binding Catalogs}">
+                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <EventSetter Event="Selected" Handler="TreeViewItem_Selected"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+            </TreeView>
+        </StackPanel>
+        <!-- Панель с товарами и кнопками -->
+        <StackPanel Grid.Column="1" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions> 
+                <Button Grid.Column="0"  Command="{Binding OpenOrderHistoryCommand}" Width="150" Margin="5, 5" HorizontalAlignment="Left" Content="история покупок"/>
+                <Button Grid.Column="1" Name="AdminMenuBtn" Command="{Binding OpenAdminMenuCommand}" Width="150" Margin="10, 5" Content="админ меню"/>
+                <Button Grid.Column="2" Width="150" Command="{Binding OpenBacketCommand}" Margin="10, 5" Content=" моя корзина"/>
+                
+            </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Очистить фильтр" Command="{Binding ClearFilterCommand}" Margin="5"/>
+                    <Button Content="Фильтр" Command="{Binding OpenFilterCommand}" Margin="5"/>
+                    
+                    <Grid>
+                        <TextBox FontSize="13.5" Width="400" Height="25" VerticalAlignment="Center" TextChanged="SearchTermTextBox_TextChanged" HorizontalAlignment="Center" x:Name="SearchTermTextBox" Margin="5"/>
+                        <TextBlock IsHitTestVisible="False" Text="Поиск по названию..." VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+            
+                <ListView Name="productList" ItemsSource="{Binding Items}" PreviewMouseLeftButtonDown="ProductList_PreviewMouseLeftButtonDown">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn  Header="Название" DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            
+        </Grid>
+
+    
+</Window>

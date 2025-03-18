@@ -1,0 +1,50 @@
+<Window x:Class="CompaterShopWpf.Windows.OrderHistoryWindow.OrderHistory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:CompaterShopWpf.Windows.OrderHistoryWindow"
+        mc:Ignorable="d"
+        Title="История заказов" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Список заказов -->
+        <ListView Grid.Column="0" ItemsSource="{Binding Orders}" 
+                  SelectedItem="{Binding SelectedOrder, Mode=TwoWay}" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Дата заказа" 
+                                    DisplayMemberBinding="{Binding OrderDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                    <GridViewColumn Header="Стоимость" 
+                                    DisplayMemberBinding="{Binding OrderPrice, StringFormat={}{0:F2}}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Детали выбранного заказа -->
+        <StackPanel Grid.Column="1" Margin="5" 
+                    Visibility="{Binding SelectedOrder}">
+            <TextBlock Text="Пользователь:" FontWeight="Bold"/>
+            <TextBlock Text="{Binding SelectedOrder.User.Name}"/>
+            <TextBlock Text="Карта:" FontWeight="Bold" Margin="0,10,0,0"/>
+            <TextBlock Text="{Binding SelectedOrder.Card.CardNumber}"/>
+            <TextBlock Text="Товары:" FontWeight="Bold" Margin="0,10,0,0"/>
+            <ListView ItemsSource="{Binding SelectedOrder.Items}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price, StringFormat='{}{0:C}'}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+
+        <!-- Сообщение, если заказов нет -->
+        <TextBlock Name="EmptyBacketMsg" Grid.Column="0" Text="Заказы не найдены" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Visibility="{Binding Orders.Count}"/>
+    </Grid>
+</Window>
