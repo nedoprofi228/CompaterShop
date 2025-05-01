@@ -14,7 +14,9 @@ public class OrderHistoryModel
         return new ObservableCollection<Order>(_dbContext.Orders
             .Include(o => o.User)
             .Include(o => o.Card)
-            .Include(o => o.Items));
+            .Include(o => o.OrderItems)
+            .ThenInclude(oi => oi.Item)
+            .Include(o => o.OrderItems));
     }
 
     public ObservableCollection<Order> GetOrdersHistoryByUserId(long userId)
@@ -22,7 +24,8 @@ public class OrderHistoryModel
         return new ObservableCollection<Order>(_dbContext.Orders
             .Include(o => o.User)
             .Include(o => o.Card)
-            .Include(o => o.Items)
+            .Include(o => o.OrderItems)
+            .ThenInclude(oi => oi.Item)
             .Where(o => o.UserId == userId));
     }
 

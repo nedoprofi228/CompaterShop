@@ -18,28 +18,38 @@ public class BacketInfoModel
             return false;
         }
 
-        if (user.Backet.Items.Count == 0)
+        if (user.Backet.ItemsDtos.Count == 0)
         {
             MessageBox.Show("Корзина пуста");
             return false;
         }
-    
+
+        
         Order order = new Order()
         {
             OrderDate = DateTime.Now,
             OrderPrice = user.Backet.TotalPrice,
             User = user,
             Card = card,
-            Items = user.Backet.Items.ToList()
         };
     
         card.Balance -= user.Backet.TotalPrice;
-        user.Backet.Items.Clear();
-    
+
+        foreach (var itemDto in user.Backet.ItemsDtos)
+        {
+            _dbContext.OrderItems.Add(new OrderItem()
+            {
+                Order = order,
+                Item = itemDto.Item,
+                Count = itemDto.Count,
+            });
+        }
+        
         _dbContext.Orders.Add(order);
         _dbContext.Cards.Update(card);
         _dbContext.SaveChanges();
-
+        user.Backet.ItemsDtos.Clear();
+        
         MessageBox.Show("Товары успешно куплены");
         return true;
     }

@@ -5,15 +5,15 @@ namespace CompaterShopWpf.Core.Entities;
 
 public class Backet
 {
-    public List<Item>? Items { get; set; } = [];
+    public List<ItemDTO>? ItemsDtos { get; set; } = [];
 
     public decimal TotalPrice
     {
         get
         {
             decimal totalPrice = 0;
-            foreach (var item in Items)
-                totalPrice += item.Price;
+            foreach (var itemDto in ItemsDtos)
+                totalPrice += itemDto.Item.Price * itemDto.Count;
             
             return totalPrice;
         }

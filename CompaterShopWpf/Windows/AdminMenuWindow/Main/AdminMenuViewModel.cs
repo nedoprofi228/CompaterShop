@@ -116,6 +116,11 @@ public class AdminMenuViewModel : INotifyPropertyChanged
         {
             _adminMenuModel.OpenOrdersHistory();
         });
+
+        OpenOrdersStatisticCommand = new DelegateCommand(() =>
+        {
+            _adminMenuModel.OpenOpenOrdersStatistic();
+        });
     }
 
     public Item? SelectedItem
@@ -186,6 +191,7 @@ public class AdminMenuViewModel : INotifyPropertyChanged
     public ICommand EditItemCommand { get; }
     public ICommand DeleteItemCommand { get; }
     public ICommand OpenOrdersHistoryCommand { get; }
+    public ICommand OpenOrdersStatisticCommand { get; }
     
 
     public event PropertyChangedEventHandler PropertyChanged;

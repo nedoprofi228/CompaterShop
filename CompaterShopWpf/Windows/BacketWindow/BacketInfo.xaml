@@ -45,10 +45,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Description}"/>
-                                <TextBlock Text="{Binding Price, StringFormat='C'}" Foreground="Green"/>
-                                <TextBlock Text="{Binding Category.CategoryName}" FontStyle="Italic"/>
+                                <TextBlock Text="{Binding Item.Name}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Item.Description}"/>
+                                <TextBlock Text="{Binding Item.Price, StringFormat='C'}" Foreground="Green"/>
+                                <TextBlock Text="{Binding Item.Category.CategoryName}" FontStyle="Italic"/>
+                                <TextBlock Text="{Binding Count, StringFormat='кол-во {0}'}" FontStyle="Italic"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>

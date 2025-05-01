@@ -1,26 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj": {}
+    "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj": {
+    "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
+        "projectUniqueName": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
         "projectName": "CompaterShopWpf",
-        "projectPath": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
+        "projectPath": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
         "packagesPath": "C:\\Users\\Alomandr\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\obj\\",
+        "outputPath": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Alomandr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Alomandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,13 +43,17 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net9.0-windows7.0": {
           "targetAlias": "net9.0-windows",
           "dependencies": {
+            "DotNetProjects.WpfToolkit.DataVisualization": {
+              "target": "Package",
+              "version": "[6.1.94, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -76,7 +86,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,7 +10,7 @@ namespace CompaterShopWpf.Windows
 {
     public class FilterViewModel
     {
-        private readonly ApplicationContext _context = ApplicationContext.GetInstance();
+        private readonly ApplicationContext _dbContext = ApplicationContext.GetInstance();
         private ObservableCollection<Category> _categories;
         private decimal _minPrice;
         private decimal _maxPrice;
@@ -58,7 +58,7 @@ namespace CompaterShopWpf.Windows
 
         public FilterViewModel(Catalog catalog)
         {
-            Categories = new ObservableCollection<Category>(_context.Categories
+            Categories = new ObservableCollection<Category>(_dbContext.Categories
                 .Where(c => c.CatalogId == catalog.Id)
                 .ToList());
             

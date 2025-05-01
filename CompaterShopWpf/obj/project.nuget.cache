@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IXOyILyNvFs=",
+  "dgSpecHash": "Mp4Oaujfml0=",
   "success": true,
-  "projectFilePath": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
+  "projectFilePath": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alomandr\\.nuget\\packages\\dotnetprojects.wpftoolkit.datavisualization\\6.1.94\\dotnetprojects.wpftoolkit.datavisualization.6.1.94.nupkg.sha512",
     "C:\\Users\\Alomandr\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.2\\microsoft.data.sqlite.core.9.0.2.nupkg.sha512",
     "C:\\Users\\Alomandr\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.2\\microsoft.entityframeworkcore.9.0.2.nupkg.sha512",
     "C:\\Users\\Alomandr\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.2\\microsoft.entityframeworkcore.abstractions.9.0.2.nupkg.sha512",

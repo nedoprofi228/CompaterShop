@@ -14,6 +14,7 @@ public class ApplicationContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Card> Cards { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
 
     private ApplicationContext() => Database.EnsureCreated();
     
@@ -32,10 +33,38 @@ public class ApplicationContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Item>().HasOne(i => i.Category).WithMany(c => c.Items).HasForeignKey(i => i.CategoryId);
-        modelBuilder.Entity<User>().HasMany(u => u.OrderHistory).WithOne(o => o.User).HasForeignKey(o => o.UserId);
-        modelBuilder.Entity<Catalog>().HasMany(c => c.Categories).WithOne(o => o.Catalog).HasForeignKey(o => o.CatalogId);
-        modelBuilder.Entity<Card>().HasOne(c => c.User).WithMany(u => u.Cards).HasForeignKey(u => u.UserId);
-        modelBuilder.Entity<Order>().HasMany(o => o.Items).WithMany( i => i.Orders);
+        modelBuilder.Entity<Item>()
+            .HasOne(i => i.Category)
+            .WithMany(c => c.Items)
+            .HasForeignKey(i => i.CategoryId);
+        
+        modelBuilder.Entity<User>()
+            .HasMany(u => u.OrderHistory)
+            .WithOne(o => o.User)
+            .HasForeignKey(o => o.UserId);
+        
+        modelBuilder.Entity<Catalog>()
+            .HasMany(c => c.Categories)
+            .WithOne(o => o.Catalog)
+            .HasForeignKey(o => o.CatalogId);
+        
+        modelBuilder.Entity<Card>()
+            .HasOne(c => c.User)
+            .WithMany(u => u.Cards)
+            .HasForeignKey(u => u.UserId);
+        
+        
+        modelBuilder.Entity<OrderItem>()
+            .HasKey(oi => oi.Id);
+
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(oi => oi.Order)
+            .WithMany(o => o.OrderItems)
+            .HasForeignKey(oi => oi.OrderId);
+
+        modelBuilder.Entity<OrderItem>()
+            .HasOne(io => io.Item)
+            .WithMany(i => i.Orders)
+            .HasForeignKey(io => io.ItemId);
     }
 }

@@ -8,7 +8,7 @@ using CompaterShopWpf.Windows.BacketWindow;
 
 public class BacketInfoViewModel : INotifyPropertyChanged
 {
-    private ObservableCollection<Item> _items;
+    private ObservableCollection<ItemDTO> _items;
     private Backet _backet = SharedData.currentUser.Backet; // Предполагаемая модель корзины
     private BacketInfoModel _backetInfoModel = new ();
     private ObservableCollection<Card> _cards;
@@ -35,7 +35,7 @@ public class BacketInfoViewModel : INotifyPropertyChanged
     }
 
     // Свойство Items
-    public ObservableCollection<Item> Items
+    public ObservableCollection<ItemDTO> Items
     {
         get => _items;
         set
@@ -57,7 +57,7 @@ public class BacketInfoViewModel : INotifyPropertyChanged
     }
 
     // Вычисляемое свойство TotalPrice
-    public decimal TotalPrice => Items?.Sum(i => i.Price) ?? 0;
+    public decimal TotalPrice => Items?.Sum(i => i.Item.Price * i.Count) ?? 0;
 
     // Свойство для выбранного элемента
     public Item? SelectedItem
@@ -66,8 +66,9 @@ public class BacketInfoViewModel : INotifyPropertyChanged
         {
             if (value != null)
             {
-                _backet.Items.Remove(value); // Удаляем из модели
-                Items.Remove(value);         // Удаляем из ViewModel (TotalPrice обновится автоматически)
+                ItemDTO item = _backet.ItemsDtos.Find(i => i.Item.Id == value.Id);
+                _backet.ItemsDtos.Remove(item); // Удаляем из модели
+                Items.Remove(item);         // Удаляем из ViewModel (TotalPrice обновится автоматически)
             }
         }
     }
@@ -80,14 +81,14 @@ public class BacketInfoViewModel : INotifyPropertyChanged
     public BacketInfoViewModel()
     {
         Cards = new ObservableCollection<Card>(SharedData.currentUser.Cards);
-        Items = new ObservableCollection<Item>(_backet.Items); // Инициализация из модели
+        Items = new ObservableCollection<ItemDTO>(_backet.ItemsDtos); // Инициализация из модели
         BuyBacketCommand = new DelegateCommand(() =>
         {
             if (SelectedCard == null )
                 return;
             
             if(_backetInfoModel.BuyItems(SelectedCard))
-                Items = new ObservableCollection<Item>();
+                Items = new ObservableCollection<ItemDTO>();
         });
 
         AddNewCardCommand = new DelegateCommand(() =>

@@ -12,27 +12,6 @@ public class MainModel
 {
     private ApplicationContext _dbContext = ApplicationContext.GetInstance();
     
-    public void SeedData()
-    {
-        if (!_dbContext.Catalogs.Any())
-        {
-            var catalog = new Catalog { Name = "Игровые ПК", Categories = new List<Category>() };
-            var category1 = new Category { CategoryName = "Видеокарты", Catalog = catalog };
-            var category2 = new Category { CategoryName = "Процессоры", Catalog = catalog };
-            catalog.Categories.Add(category1);
-            catalog.Categories.Add(category2);
-            var product1 = new Item { Name = "NVIDIA RTX 3080", Price = 699.99m, Category = category1 };
-            var product2 = new Item { Name = "AMD Ryzen 9 5900X", Price = 549.99m, Category = category2 };
-
-            _dbContext.Catalogs.Add(catalog);
-            _dbContext.Categories.AddRange(new[] { category1, category2 });
-            _dbContext.Items.AddRange(new[] { product1, product2 });
-            _dbContext.SaveChanges();
-        }
-    }
-    
-    
-
     public ObservableCollection<Item>? OpenFilter(Catalog catalog)
     {
         var filterViewModel = new FilterViewModel(catalog);

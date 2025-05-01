@@ -17,7 +17,7 @@ namespace StoreApp.ViewModels
     public class MainViewModel : INotifyPropertyChanged
     {
         private MainModel _model = new MainModel();
-        private readonly ApplicationContext _context = ApplicationContext.GetInstance();
+        private readonly ApplicationContext _dbContext = ApplicationContext.GetInstance();
         private List<Item> _itemsByFilter = [];
         private ObservableCollection<Item> _items;
         private ObservableCollection<Catalog> _catalogs;
@@ -77,8 +77,7 @@ namespace StoreApp.ViewModels
 
         public MainViewModel()
         {
-            _model.SeedData();
-            Catalogs = new ObservableCollection<Catalog>(_context.Catalogs);
+            Catalogs = new ObservableCollection<Catalog>(_dbContext.Catalogs);
             Items = new ObservableCollection<Item>();
             
             OpenFilterCommand = new DelegateCommand(() =>
@@ -112,7 +111,7 @@ namespace StoreApp.ViewModels
             OpenAdminMenuCommand = new DelegateCommand(() =>
             {
                 _model.OpenAdminMenuCommand();
-                Catalogs = new ObservableCollection<Catalog>(_context.Catalogs);
+                Catalogs = new ObservableCollection<Catalog>(_dbContext.Catalogs);
                 
             });
 

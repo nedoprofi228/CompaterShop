@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace CompaterShopWpf.Core.Entities;
@@ -15,6 +16,9 @@ public class Order
     
     public long CardId { get; set; }
     public Card Card { get; set; }
-
-    public List<Item> Items { get; set; } = [];
+    
+    public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    
+    [NotMapped]
+    public IEnumerable<ItemDTO> Items { get; set; } = [];
 }

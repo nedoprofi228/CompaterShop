@@ -9,7 +9,7 @@ namespace CompaterShopWpf.Windows.NewCardWindow;
 
 public class NewCardViewModel
 {
-    private readonly ApplicationContext _context = ApplicationContext.GetInstance();
+    private readonly ApplicationContext _dbContext = ApplicationContext.GetInstance();
     private string _cardNumber;
     private decimal _balance;
     private string _errorMessage;
@@ -54,7 +54,7 @@ public class NewCardViewModel
         }
 
         // Проверка уникальности номера карты
-        if (_context.Cards.Any(c => c.CardNumber == CardNumber))
+        if (_dbContext.Cards.Any(c => c.CardNumber == CardNumber))
         {
             MessageBox.Show("Карта с таким номером уже существует.");
             return false;

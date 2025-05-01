@@ -13,6 +13,6 @@ public class Item
     public decimal Price { get; set; } = decimal.Zero;
     public long CategoryId { get;  set; } 
     public Category? Category { get;  set; }
-    public List<Order> Orders { get; set; } = [];
+    public List<OrderItem> Orders { get; set; } = [];
 
 }

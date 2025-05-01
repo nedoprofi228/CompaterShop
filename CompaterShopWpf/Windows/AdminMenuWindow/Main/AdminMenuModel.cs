@@ -5,6 +5,7 @@ using CompaterShopWpf.DataBase;
 using CompaterShopWpf.Windows.AdminMenuWindow.EditCatalogWindow;
 using CompaterShopWpf.Windows.AdminMenuWindow.EditCategory;
 using CompaterShopWpf.Windows.OrderHistoryWindow;
+using CompaterShopWpf.Windows.OrderStatisticWindow;
 
 namespace CompaterShopWpf.Windows.AdminMenuWindow;
 
@@ -188,6 +189,12 @@ public class AdminMenuModel
     public void OpenOrdersHistory()
     {
         OrderHistory orderHistoryWindow = new OrderHistory();
-        orderHistoryWindow.Show();
+        orderHistoryWindow.ShowDialog();
+    }
+
+    public void OpenOpenOrdersStatistic()
+    {
+        OrderStatistic orderStatisticWindow = new OrderStatistic();
+        orderStatisticWindow.ShowDialog();
     }
 }

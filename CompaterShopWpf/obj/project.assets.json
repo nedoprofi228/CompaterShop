@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net9.0-windows7.0": {
+      "DotNetProjects.WpfToolkit.DataVisualization/6.1.94": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/DotNetProjects.DataVisualization.Toolkit.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/DotNetProjects.DataVisualization.Toolkit.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Microsoft.Data.Sqlite.Core/9.0.2": {
         "type": "package",
         "dependencies": {
@@ -523,6 +535,20 @@
     }
   },
   "libraries": {
+    "DotNetProjects.WpfToolkit.DataVisualization/6.1.94": {
+      "sha512": "5xmRUH+/F3zRxcI8b93W9OUvOUKXpcHShj7jGJdpBAgQTNPEeMLISA/wsO5egSG74Msx+01xwaYjDFTDTUawhQ==",
+      "type": "package",
+      "path": "dotnetprojects.wpftoolkit.datavisualization/6.1.94",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dotnetprojects.wpftoolkit.datavisualization.6.1.94.nupkg.sha512",
+        "dotnetprojects.wpftoolkit.datavisualization.nuspec",
+        "lib/net40/DotNetProjects.DataVisualization.Toolkit.dll",
+        "lib/net5.0-windows7.0/DotNetProjects.DataVisualization.Toolkit.dll",
+        "lib/net6.0-windows7.0/DotNetProjects.DataVisualization.Toolkit.dll"
+      ]
+    },
     "Microsoft.Data.Sqlite.Core/9.0.2": {
       "sha512": "lJbaLhjWnnPfLhZrQXPri5F0pmlJXg68yCSf5aRM3qFF8WD7dT1jnQUuBd3YvT5s1VDOH9t/6filPcTIOwZR7Q==",
       "type": "package",
@@ -1247,31 +1273,39 @@
   },
   "projectFileDependencyGroups": {
     "net9.0-windows7.0": [
+      "DotNetProjects.WpfToolkit.DataVisualization >= 6.1.94",
       "Microsoft.EntityFrameworkCore >= 9.0.2",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.2",
       "Prism.Core >= 9.0.537"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alomandr\\.nuget\\packages\\": {}
+    "C:\\Users\\Alomandr\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
+      "projectUniqueName": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
       "projectName": "CompaterShopWpf",
-      "projectPath": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
+      "projectPath": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf.csproj",
       "packagesPath": "C:\\Users\\Alomandr\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\Projects\\С#\\CompaterShopWpf\\CompaterShopWpf\\obj\\",
+      "outputPath": "C:\\Users\\Alomandr\\Downloads\\Telegram Desktop\\CompaterShopWpf\\CompaterShopWpf\\CompaterShopWpf\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Alomandr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Alomandr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1288,13 +1322,17 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       }
     },
     "frameworks": {
       "net9.0-windows7.0": {
         "targetAlias": "net9.0-windows",
         "dependencies": {
+          "DotNetProjects.WpfToolkit.DataVisualization": {
+            "target": "Package",
+            "version": "[6.1.94, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[9.0.2, )"
@@ -1327,7 +1365,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

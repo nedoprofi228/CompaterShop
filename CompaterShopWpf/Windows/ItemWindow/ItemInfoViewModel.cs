@@ -7,6 +7,7 @@ using CompaterShopWpf.Core.Entities;
 public class ItemInfoViewModel : INotifyPropertyChanged
 {
     private Item _item;
+    private int _count = 1;
 
     public Item Item
     {
@@ -17,6 +18,20 @@ public class ItemInfoViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(Item));
         }
     }
+
+    public int Count
+    {
+        get => _count;
+        set
+        {
+            if(int.TryParse(value.ToString(), out _count))
+            {
+                OnPropertyChanged(nameof(Count));
+            }
+        }
+    }
+    
+    
 
     public ICommand AddToBacketCommand { get; }
     public ICommand RemoveFromBacketCommand { get; }
@@ -30,14 +45,28 @@ public class ItemInfoViewModel : INotifyPropertyChanged
 
     private void AddToBacket()
     {
-        SharedData.currentUser.Backet.Items.Add(Item);
+        User user = SharedData.currentUser;
+        ItemDTO? itemDto = user.Backet.ItemsDtos.Find(i => i.Item.Id == Item.Id);
         
+        if(itemDto != null)
+        {
+            itemDto.Count += _count;
+            MessageBox.Show($"предмет добавлен в корзину");
+            return;
+        }
+        
+        user.Backet.ItemsDtos.Add(new ItemDTO()
+        {
+            Item = Item,
+            Count = _count
+        });
         MessageBox.Show($"предмет добавлен в корзину");
     }
 
     private void RemoveFromBacket()
     {
-        SharedData.currentUser.Backet.Items.Remove(Item);
+        ItemDTO itemDto = SharedData.currentUser.Backet.ItemsDtos.Find(i => i.Item.Id == Item.Id);
+        SharedData.currentUser.Backet.ItemsDtos.Remove(itemDto);
         
         MessageBox.Show("предмет удален из козины");
     }

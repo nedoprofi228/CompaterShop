@@ -8,9 +8,9 @@ public class RegisterService
 {
     public static bool Register(string name, string login, string password)
     {
-        ApplicationContext dbContext = ApplicationContext.GetInstance();
+        ApplicationContext _dbContext = ApplicationContext.GetInstance();
         
-        User? user = dbContext.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+        User? user = _dbContext.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
         if (user != null)
             throw new Exception("Пользователь с таким логином уже существует");
         
@@ -28,7 +28,7 @@ public class RegisterService
         };
         
         SharedData.currentUser = newUser;
-        dbContext.Users.Add(newUser);
-        return dbContext.SaveChanges() > 0;
+        _dbContext.Users.Add(newUser);
+        return _dbContext.SaveChanges() > 0;
     }
 }
