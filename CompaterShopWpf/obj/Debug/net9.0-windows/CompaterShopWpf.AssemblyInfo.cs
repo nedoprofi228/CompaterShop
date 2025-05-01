@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CompaterShopWpf")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7386a8674f29df6396d176d14429387322030d87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8f3278a514f55a13c328d623b0ec7373b83ebf3")]
 [assembly: System.Reflection.AssemblyProductAttribute("CompaterShopWpf")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CompaterShopWpf")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

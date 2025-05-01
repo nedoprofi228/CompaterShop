@@ -19,11 +19,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Название:" Grid.Row="0"/>
-        <TextBox Text="{Binding Item.Name}" Grid.Row="1" Margin="0,5,0,10"/>
+        <TextBox Text="{Binding Name}" Grid.Row="1" Margin="0,5,0,10"/>
         <TextBlock Text="Описание:" Grid.Row="2"/>
-        <TextBox Text="{Binding Item.Description}" Grid.Row="3" Margin="0,5,0,10"/>
+        <TextBox Text="{Binding Description}" Grid.Row="3" Margin="0,5,0,10"/>
         <TextBlock Text="Цена:" Grid.Row="4"/>
-        <TextBox Text="{Binding Item.Price}" Grid.Row="5" Margin="0,5,0,10"/>
+        <TextBox Text="{Binding Price}" Grid.Row="5" Margin="0,5,0,10"/>
         <TextBlock Text="{Binding Item.Category.CategoryName, StringFormat = 'Категория: {0}'}" Grid.Row="6"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="8">

@@ -98,7 +98,7 @@ public class AdminMenuViewModel : INotifyPropertyChanged
             
             var item = SelectedCategoryItems.FirstOrDefault(i => i.Id == SelectedItem.Id);
             item = _adminMenuModel.EditItem(SelectedItem);
-            OnPropertyChanged(nameof(SelectedCategoryItems));
+            SelectedCategory = SelectedCategory;
         });
         DeleteItemCommand = new DelegateCommand(() =>
         {
